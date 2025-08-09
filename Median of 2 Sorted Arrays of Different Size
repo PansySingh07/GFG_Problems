@@ -1,0 +1,36 @@
+class Solution {
+    public double medianOf2(int a[], int b[]) {
+        int n = a.length;
+        int m = b.length;
+        int result[] = new int[n + m];
+
+        int i = 0, j = 0, index = 0;
+
+        // Merge both arrays
+        while (i < n && j < m) {
+            if (a[i] < b[j]) {
+                result[index++] = a[i++];
+            } else {
+                result[index++] = b[j++];
+            }
+        }
+
+        // Remaining elements from a
+        while (i < n) {
+            result[index++] = a[i++];
+        }
+
+        // Remaining elements from b
+        while (j < m) {
+            result[index++] = b[j++];
+        }
+
+        // Calculate median
+        int total = n + m;
+        if (total % 2 == 0) {
+            return (result[total / 2 - 1] + result[total / 2]) / 2.0;
+        } else {
+            return result[total / 2];
+        }
+    }
+}
