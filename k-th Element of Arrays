@@ -1,0 +1,30 @@
+class Solution {
+    public int kthElement(int a[], int b[], int k) {
+        // code here
+        int n = a.length;
+        int m = b.length;
+        int result[] = new int[n + m];
+
+        int i = 0, j = 0, index = 0;
+
+        // Merge both arrays
+        while (i < n && j < m) {
+            if (a[i] < b[j]) {
+                result[index++] = a[i++];
+            } else {
+                result[index++] = b[j++];
+            }
+        }
+
+        // Remaining elements from a
+        while (i < n) {
+            result[index++] = a[i++];
+        }
+
+        // Remaining elements from b
+        while (j < m) {
+            result[index++] = b[j++];
+        }
+        return result[k-1];
+    }
+}
