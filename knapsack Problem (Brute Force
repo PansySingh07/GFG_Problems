@@ -1,0 +1,24 @@
+class Solution {
+    static int knapsack(int W, int val[], int wt[]) {
+        // code here
+       return helper(W, val, wt, 0, val.length);    
+    }
+    static int helper(int W, int val[], int wt[], int currentIndex, int n){
+        //Base case
+        if(currentIndex == n){
+            return 0;
+        }
+        if(W == 0){
+            return 0;
+        }
+        //leave it
+        int valueAfterLeave = helper(W, val, wt, currentIndex+1,n);
+        //take it
+        int valueAfterTake = 0;
+        if(wt[currentIndex] <= W){
+            int valueAfterTake = val[currentIndex] + helper(W-wt[currentIndex], val, wt, currentIndex+1, n);
+        }
+        //check which one gives max value
+        return Math.max(valueAfterLeave, valueAfterTake);
+    }
+}
