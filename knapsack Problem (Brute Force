@@ -16,7 +16,7 @@ class Solution {
         //take it
         int valueAfterTake = 0;
         if(wt[currentIndex] <= W){
-            int valueAfterTake = val[currentIndex] + helper(W-wt[currentIndex], val, wt, currentIndex+1, n);
+        valueAfterTake = val[currentIndex] + helper(W-wt[currentIndex], val, wt, currentIndex+1, n);
         }
         //check which one gives max value
         return Math.max(valueAfterLeave, valueAfterTake);
